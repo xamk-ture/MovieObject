@@ -1,4 +1,6 @@
-﻿namespace MovieObject
+﻿using System.Linq.Expressions;
+
+namespace MovieObject
 {
     internal class Program
     {
@@ -6,18 +8,34 @@
         {
             Console.WriteLine("Hello, World!");
 
-            Movie movie = new("Testi leffa", 250, Genre.Action);
 
-            DateTime time = new(2026, 12, 12, 20, 00, 0);
-            Screening screening = new(movie, 15, time, "Mikkeli", ShowRoom.BigScreen);
+            OrderService service = new();
+            service.ShowScreenings();
 
-            List<Screening> theaterScreenings = new();
-            theaterScreenings.Add(screening);
+            string valinta = Console.ReadLine();
 
-            //Valitaan näytös
-            //Valitaan paikka
-            //Maksetaan varaus
-            //Saadaan kuitti
+            switch (valinta)
+            {
+                case "1":
+                    //osta lippu
+                    service.BuyScreening(null);
+                    break;
+                case "2":
+                    service.ShowScreenings();
+                    break;
+                default:
+                    // code block
+                    break;
+            }
+
+            if (valinta == "1")
+            {
+                //osta lippu
+            }
+            else if(valinta == "2")
+            {
+                //näytä näytökset
+            }
         }
     }
 }
